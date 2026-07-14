@@ -23,6 +23,10 @@ The central narrative frames Adventure World as a national park managed by the f
 
 - **Expedition Outfitters** — Adventure and outdoor-themed merchandise, Kova Corps branded gear
 
+## Character Meet & Greet
+
+- **Ranger Kova** meets guests at the Jungle Trek entrance at 11:00 and 14:30 daily.
+
 ## Practical Information
 
 - Area entrance is located on the north side of the center hub
@@ -30,3 +34,4 @@ The central narrative frames Adventure World as a national park managed by the f
 - Guests exiting Thunder Rapids should expect to be significantly wet
 - Towel and poncho rental available at the area entrance kiosk
 - Stroller and wheelchair parking available at all attraction entrances
+- Full daily show schedule (Thunder Rapids Stunt Show, Peak Assault Speed Record Attempt) is documented in `adventure_world_events_daily.md`

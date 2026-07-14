@@ -21,4 +21,4 @@ Neon Circuit puts guests inside a data packet racing through Axiom Labs' experim
 
 - No single-rider lane
 - Ride closes during thunderstorms and high winds — check the Epic Worlds app for real-time status
-- Evening light show overlay runs at 20:00 and 21:00 during Summer Nights event
+- **Neon Circuit Night Run** — evening light-show overlay on the coaster, running at 20:00 and 21:00 during the Summer Nights seasonal event only (see `future_world_events_daily.md`)

@@ -21,5 +21,5 @@ Peak Assault simulates a high-altitude mountaineering rescue mission gone specta
 
 - No single-rider lane
 - Closes during high winds, rain, and thunderstorms — most weather-sensitive attraction in the park
-- Timed speed record runs with live commentary every Saturday at 13:00
+- **Peak Assault Speed Record Attempt** — timed speed record runs with live commentary every Saturday at 13:00 (see `adventure_world_events_daily.md`)
 - Highest thrill rating in the park — not suitable for guests with heart conditions, high blood pressure, or anxiety around heights

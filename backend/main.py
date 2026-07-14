@@ -9,6 +9,7 @@ from config import FRONTEND_ORIGIN
 from models import FallbackCard
 from orchestrator import handle_query
 
+logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
 
 app = FastAPI()

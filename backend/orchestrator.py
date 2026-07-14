@@ -17,12 +17,19 @@ KB_UNAVAILABLE_MESSAGE = "Could not search the knowledge base. Please try again.
 
 TOOL_SYSTEM_PROMPT = """You are an internal assistant for Epic Worlds theme park staff.
 You answer questions about attractions, tickets, events, themed areas,
-and accessibility only. If asked anything outside this scope, politely
-decline and suggest the employee contacts the relevant department.
+and accessibility only. Genuinely out-of-scope topics — HR, payroll, IT
+support, scheduling, or anything unrelated to the park's guest-facing
+operations — should be declined politely, suggesting the employee contact
+the relevant department, without calling any tool.
 
-You have two tools available. Call whichever ones are relevant to the
-question — one, both, or neither — never call a tool "just in case" if the
-question doesn't call for it.
+For anything that's plausibly a park question, call search_knowledge_base
+to check rather than guessing or declining outright, even if it's vaguely
+phrased or doesn't name a specific attraction or category — e.g. "what's
+happening for Fable Fest" or "anything special on this week" are both worth
+a search attempt. The tool itself filters out irrelevant results and
+returns nothing if the topic isn't actually covered, so calling it costs
+nothing — never decline a plausible park question without having called
+the tool first.
 
 Use the search_knowledge_base tool to look up anything you need before
 answering — call it once per distinct topic (e.g. call it twice if the
@@ -84,6 +91,20 @@ def _fallback_response(message: str = DEFAULT_FALLBACK_MESSAGE) -> dict:
     return {"cards": [FallbackCard(message=message).model_dump()], "connector_label": None}
 
 
+def _log_tool_trajectory(tool_history: list[types.Content]) -> None:
+    for content in tool_history:
+        for part in content.parts:
+            if part.function_call:
+                logger.info("  tool call: %s(%s)", part.function_call.name, dict(part.function_call.args or {}))
+            if part.function_response:
+                result = part.function_response.response
+                if result.get("error"):
+                    logger.info("  tool result: %s -> error: %s", part.function_response.name, result["error"])
+                else:
+                    count = len(result.get("result") or [])
+                    logger.info("  tool result: %s -> %d item(s)", part.function_response.name, count)
+
+
 def _found_relevant_results(tool_history: list[types.Content]) -> bool:
     for content in tool_history:
         for part in content.parts:
@@ -108,6 +129,7 @@ def _kb_search_failed(tool_history: list[types.Content]) -> bool:
 
 
 def handle_query(query: str, history: list) -> dict:
+    logger.info("query: %r", query)
     contents = history_to_contents(history)
     contents.append(types.Content(role="user", parts=[types.Part(text=query)]))
 
@@ -126,11 +148,19 @@ def handle_query(query: str, history: list) -> dict:
         return _fallback_response(UNAVAILABLE_MESSAGE)
 
     tool_history = tool_response.automatic_function_calling_history
+    if tool_history:
+        _log_tool_trajectory(tool_history)
+    else:
+        logger.info("  no tools called")
+
     if tool_history and not _found_relevant_results(tool_history) and _kb_search_failed(tool_history):
+        logger.info("  knowledge base search failed -> KB fallback")
         return _fallback_response(KB_UNAVAILABLE_MESSAGE)
     if not tool_history or not _found_relevant_results(tool_history):
+        logger.info("  no relevant results -> routing to guide agent")
         return generate_guide_response(query, history)
 
+    logger.info("  relevant results found -> formatting turn")
     format_contents = list(tool_history)
     format_contents.append(
         types.Content(
@@ -155,7 +185,9 @@ def handle_query(query: str, history: list) -> dict:
 
     parsed: ResponsePayload | None = response.parsed
     if parsed is None:
+        logger.info("  formatting turn returned no parsed response -> fallback")
         return _fallback_response(
             "I couldn't generate a valid response. Please try again or contact Guest Services."
         )
+    logger.info("  produced cards: %s", [card.card_type for card in parsed.cards])
     return parsed.model_dump()

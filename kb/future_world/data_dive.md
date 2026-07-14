@@ -21,5 +21,5 @@ Guests board a slow-moving vehicle shaped like a data capsule and travel through
 
 - Fully wheelchair accessible, no transfer required
 - Low-stimulation mode available on request at entrance (reduced audio levels, no sudden lighting changes)
-- Live presenter host sessions at 11:00, 14:00, and 17:00 daily
+- **Data Dive Presenter Session** — live presenter host sessions at 11:00, 14:00, and 17:00 daily (see `future_world_events_daily.md`)
 - Highest sustained capacity in Future World — recommended as a wait-time relief option when other attractions are busy

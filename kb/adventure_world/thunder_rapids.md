@@ -22,3 +22,4 @@ Guests join the Kova Expedition Corps for a whitewater survey mission through th
 - Guests will get wet — ponchos available for €3 at area entrance
 - Closes during thunderstorms and in winter months (November–March)
 - One of the park's highest-capacity outdoor attractions — a key redirect target during peak hours in other areas
+- **Thunder Rapids Stunt Show** — waterside stunt performance held near the attraction at 12:30 and 15:30 daily (see `adventure_world_events_daily.md`)

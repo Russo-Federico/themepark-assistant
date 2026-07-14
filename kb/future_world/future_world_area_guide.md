@@ -23,9 +23,14 @@ The central narrative of Future World is that guests are visiting the headquarte
 
 - **The Lab Store** — Tech-themed merchandise, Axiom Labs branded items, exclusive Future World collectibles
 
+## Character Meet & Greet
+
+- **Captain Axiom** meets guests at Orbit Station plaza at 10:00, 13:00, and 16:00 daily.
+
 ## Practical Information
 
 - Area entrance is located on the east side of the center hub
 - Restrooms available at north and south ends of the area
 - Quiet zone available near Data Dive for sensory-sensitive guests
 - Stroller and wheelchair parking available at all attraction entrances
+- Full daily show schedule (Neon Circuit Night Run, Data Dive Presenter Session) is documented in `future_world_events_daily.md`; seasonal Innovation Days event details are in `future_world_events_innovation_days.md`
