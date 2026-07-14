@@ -6,7 +6,8 @@ this app only captures input, calls `POST /query`, and renders the response as c
 
 ## Prerequisites
 
-- Node 18+
+- Node `^22.18.0` or `>=24.12.0` (see `package.json`'s `engines` field — older Node versions will
+  install and run with an `EBADENGINE` warning, but aren't officially supported)
 - The backend running (see `../backend/README.md`)
 
 ## Setup
