@@ -1,0 +1,95 @@
+:root {
+  /* ── Brand & Backgrounds ────────────────────────────────────────── */
+  --color-bg: #11151c;
+  --color-surface-1: #161c26;
+  --color-surface-2: #1d2530;
+  --color-header-bg: #161c26;
+  --color-brand-blue: #11151c;
+
+  /* ── Accent (brass) ─────────────────────────────────────────────── */
+  --color-accent: #c9a24a;
+  --color-accent-text: #1b1608;
+  --color-accent-gradient: linear-gradient(135deg, #ddb968 0%, #c9a24a 55%, #a9843a 100%);
+
+  /* ── Live indicator ─────────────────────────────────────────────── */
+  --color-live-dot: #7fb3a0;
+
+  /* ── Typography ─────────────────────────────────────────────────── */
+  --color-text-primary: #eef1f5;
+  --color-text-secondary: rgba(238, 241, 245, 0.55);
+  --color-text-weak: rgba(238, 241, 245, 0.32);
+
+  /* ── Borders ────────────────────────────────────────────────────── */
+  --color-border-thin: rgba(255, 255, 255, 0.06);
+  --color-border-marked: rgba(255, 255, 255, 0.13);
+
+  /* ── Input Bar ──────────────────────────────────────────────────── */
+  --color-input-bg: #1d2530;
+  --color-input-border: rgba(255, 255, 255, 0.13);
+  --color-input-placeholder: rgba(238, 241, 245, 0.32);
+
+  /* ── Cards ──────────────────────────────────────────────────────── */
+  --color-card-bg: #161c26;
+  --color-card-border: rgba(255, 255, 255, 0.06);
+
+  /* ── Card accent borders ────────────────────────────────────────── */
+  --color-accent-liveops: #ef9f27;
+  --color-accent-accessibility: #00d4c8;
+  --color-accent-event: #8b5cf6;
+  --color-accent-guide: var(--color-accent);
+
+  /* ── Card icon backgrounds & foregrounds ────────────────────────── */
+  --color-icon-attraction-bg: rgba(15, 110, 86, 0.2);
+  --color-icon-attraction-fg: #34d399;
+  --color-icon-liveops-bg: rgba(239, 159, 39, 0.2);
+  --color-icon-liveops-fg: #fbbf24;
+  --color-icon-accessibility-bg: rgba(0, 212, 200, 0.2);
+  --color-icon-accessibility-fg: #2dd4bf;
+  --color-icon-event-bg: rgba(139, 92, 246, 0.2);
+  --color-icon-event-fg: #a78bfa;
+
+  /* ── Wait status ────────────────────────────────────────────────── */
+  --color-wait-high-bg: rgba(163, 45, 45, 0.2);
+  --color-wait-high-text: #f87171;
+  --color-wait-med-bg: rgba(239, 159, 39, 0.2);
+  --color-wait-med-text: #fbbf24;
+  --color-wait-low-bg: rgba(15, 110, 86, 0.2);
+  --color-wait-low-text: #34d399;
+
+  /* ── Badges ─────────────────────────────────────────────────────── */
+  --color-badge-accessible-bg: rgba(0, 212, 200, 0.2);
+  --color-badge-accessible-text: #2dd4bf;
+  --color-badge-express-bg: rgba(24, 95, 165, 0.2);
+  --color-badge-express-text: #60a5fa;
+
+  /* ── Typography Fonts ───────────────────────────────────────────── */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* ── Spacing ────────────────────────────────────────────────────── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* ── Feed layout ────────────────────────────────────────────────── */
+  --feed-padding-top: calc(var(--header-height) + 28px);
+  --feed-padding-x: 32px;
+  --feed-padding-bottom: 12px;
+  --feed-gap: 30px;
+
+  /* ── Radii ──────────────────────────────────────────────────────── */
+  --radius-card: 16px;
+  --radius-bubble: 999px;
+  --radius-pill: 999px;
+  --radius-icon: 8px;
+  --radius-badge: 6px;
+
+  /* ── Header ─────────────────────────────────────────────────────── */
+  --header-height: 56px;
+
+  /* ── Input bar ──────────────────────────────────────────────────── */
+  --input-bar-btn-size: 36px;
+}

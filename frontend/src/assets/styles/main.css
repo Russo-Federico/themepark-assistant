@@ -1,0 +1,36 @@
+@import './reset.css';
+@import './variables.css';
+@import './typography.css';
+
+body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ── Scrollbar styling ────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-card-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-secondary);
+}
