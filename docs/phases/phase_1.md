@@ -6,7 +6,9 @@ Verify that frontend and backend start up, communicate correctly, and that the U
 
 ## Context
 
-This is the first phase of a 5-phase project. The full technical specification is in `epic_worlds_tech_spec.md`. The full UI specification is in `epic_worlds_ui_spec.md`. Read both before starting.
+This is the first phase of an originally-planned 5-phase project. The full technical specification is in `epic_worlds_tech_spec.md`. The full UI specification is in `epic_worlds_ui_spec.md`. Read both before starting.
+
+> **Note (added after the fact):** voice input, originally planned as its own phase, was deferred indefinitely (see `future_development.md`) — the project ultimately shipped as 4 phases (`phase_1.md`–`phase_4.md`), not 5.
 
 ## What Exists Already
 
@@ -62,10 +64,12 @@ The hardcoded mock response to return:
   - `EventCard.vue`
   - `FallbackCard.vue`
 - `ChatFeed.vue` iterates over the `cards` array in the response and renders the correct component based on `card_type`
-- `UserBubble.vue` renders the employee's query as a right-aligned blue bubble
-- `assistant.js` contains the fetch call to `POST /query` at `http://localhost:8000`
+- `UserBubble.vue` renders the employee's query as a right-aligned bubble in the brand accent color
+- `assistant.ts` contains the fetch call to `POST /query` at `http://localhost:8000`
 - Conversation history maintained in Vue component state and appended to every request
-- Previous cards dimmed to 45% opacity when a new response arrives
+- Previous cards dimmed to 45% opacity when a new response arrives (**note added after the fact:**
+  this was never actually implemented and was dropped from scope entirely in `phase_4.md`'s final
+  UI review — don't treat it as a real feature)
 - Mic button is visible and correctly styled but does not record yet — clicking it does nothing in this phase
 
 ## What NOT to Build in This Phase
@@ -82,6 +86,7 @@ The hardcoded mock response to return:
 - `uv run uvicorn main:app --reload` starts the backend with no errors
 - `npm run dev` starts the frontend with no errors
 - Typing a question in the text field and pressing send renders a Dragon Flight attraction card in the UI
-- The user's question appears as a blue bubble above the card
-- On a second query, the first card dims to 45% opacity
+- The user's question appears as an accent-colored bubble above the card
+- On a second query, the first card dims to 45% opacity (**note added after the fact:** this was
+  never built — see the note above; treat this bullet as historical intent, not an achieved result)
 - All five card component shells exist and accept their respective JSON shapes without errors

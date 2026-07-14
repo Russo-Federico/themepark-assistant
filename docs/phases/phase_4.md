@@ -6,7 +6,14 @@ Harden the application for a real demo. Handle all error states gracefully. Veri
 
 ## Context
 
-Phase 3 is complete. All features are functional: text input, RAG, Live Ops, intent classification, and the hybrid orchestration flow. This phase tightens everything up. The full technical spec is in `epic_worlds_tech_spec.md` and the UI spec is in `epic_worlds_ui_spec.md`.
+Phase 3 is complete. All features are functional: text input, RAG, Live Ops, and the hybrid
+orchestration flow. This phase tightens everything up. The full technical spec is in
+`epic_worlds_tech_spec.md` and the UI spec is in `epic_worlds_ui_spec.md`.
+
+**Correction:** this paragraph originally listed "intent classification" as a completed feature,
+but `phase_3.md` documents that a separate intent-classification step was deliberately never
+built — it was replaced by agentic tool-calling before Phase 3 even started (see `phase_3.md`'s
+"Updated from the original plan" note). There is no classifier anywhere in the shipped system.
 
 Voice input is deferred (see `future_development.md`) — no STT/audio error handling in scope here.
 
@@ -28,6 +35,18 @@ Wrap every failure point in a try/except and return a `FallbackCard` with an app
 - Phase A's tool-calling loop raises or exhausts its remote-call cap without a usable result → fall through to the Guide agent rather than failing entirely (same path as "no relevant tool results", see `phase_3.md`)
 
 All errors should be logged to the console with enough detail to debug, but the response to the frontend is always a valid JSON FallbackCard — never a raw exception or HTTP error body.
+
+> **Updated after initial build:** the ChromaDB-failure bullet above reads as if wrapping Phase A's
+> `generate_content` call in a plain try/except is enough to catch it — it isn't. The `google-genai`
+> SDK's Automatic Function Calling catches exceptions raised *inside* tool functions itself and
+> never lets them propagate to the `generate_content()` call site; it converts them into a
+> `function_response` with an `{"error": "..."}` payload instead, and the model just tries
+> something else. Detecting a ChromaDB failure actually requires inspecting
+> `tool_response.automatic_function_calling_history` after the call for a `search_knowledge_base`
+> response containing that `"error"` key, and only short-circuiting to the KB-specific fallback
+> when nothing else in the same turn succeeded either (e.g. a hybrid query where live ops still
+> returned data should still produce a normal response, not a blanket failure). See
+> `backend/CLAUDE.md`'s "Error handling" section for the full explanation.
 
 ### Frontend Error Handling
 

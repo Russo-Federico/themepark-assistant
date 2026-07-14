@@ -38,7 +38,7 @@ Implement `get_live_wait_times(area: str | None = None) -> list[dict]`, calling 
 
 ### Guide Agent (Onboarding Assistance)
 
-Unchanged in behavior from the original plan, simplified in how it's reached. Implement `backend/tools/guide_tool.py` exposing `generate_guide_response(query: str, history: list) -> dict` — a **second, separate** `gemini-2.5-flash-lite` call (not Phase A, not Phase B) with its own system prompt:
+Unchanged in behavior from the original plan, simplified in how it's reached. Implement `backend/tools/guide_tool.py` exposing `generate_guide_response(query: str, history: list) -> dict` — a **second, separate** Gemini call (not Phase A, not Phase B) using the model configured in `config.py`'s `GEMINI_MODEL` (originally `gemini-2.5-flash-lite`, since upgraded to `gemini-3.1-flash-lite` — see that file for the current value) with its own system prompt:
 
 ```
 You are the onboarding guide for the Epic Worlds Staff Assistant. You are NOT

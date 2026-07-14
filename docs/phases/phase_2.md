@@ -22,8 +22,11 @@ Phase 1 is complete. The frontend and backend are running and communicating. All
 Add to the backend via uv:
 
 ```bash
-uv add chromadb google-generativeai fastmcp pydantic pypdf
+uv add chromadb google-genai fastmcp pydantic pypdf
 ```
+
+(`google-generativeai` was the original package name planned here; the SDK was renamed to
+`google-genai` before this was built, and that's what `pyproject.toml` actually uses.)
 
 ### Pydantic Response Models (`backend/models.py`)
 
@@ -38,7 +41,7 @@ Define one Pydantic model per card type matching the response contract in the te
 Run the indexer once manually before starting the backend:
 
 ```bash
-uv run python backend/pipeline/indexer.py
+cd backend && uv run python -m pipeline.indexer
 ```
 
 ### Metadata Extraction
